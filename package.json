@@ -5,14 +5,23 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint .",
     "clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.16.1",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/bottom-tabs": "5.x",
+    "@react-navigation/native": "^5.1.5",
+    "@react-navigation/stack": "5.x",
     "react": "17.0.2",
-    "react-native": "0.67.3"
+    "react-native": "0.67.3",
+    "react-native-gesture-handler": "^2.2.0",
+    "react-native-reanimated": "^2.4.1",
+    "react-native-safe-area-context": "^4.0.2",
+    "react-native-screens": "^3.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
