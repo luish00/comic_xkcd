@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { Favorities } from '../componets/favorities/Favorities';
 
 const stytles = StyleSheet.create({
   flex: {
@@ -7,12 +8,6 @@ const stytles = StyleSheet.create({
   }
 });
 
-const FavoriteScreen = () => {
-  return (
-    <View style={stytles.flex}>
-      <Text>Favorite</Text>
-    </View>
-  );
-}
+const FavoriteScreen = () => (<Favorities />)
 
 export { FavoriteScreen };

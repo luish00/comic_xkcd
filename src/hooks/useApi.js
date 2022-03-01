@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 const URL_BASE = 'https://xkcd.com/';
+const URL_JSON = 'info.0.json';
 
 async function apiFetch({ body, headers = {}, method, params = {}, url }) {
   let rest = {};
@@ -55,4 +56,4 @@ const useApiGet = ({ headers = {} } = {}) => {
   return [get, result, isLoading];
 };
 
-export { useApiGet }
+export { useApiGet, URL_JSON }

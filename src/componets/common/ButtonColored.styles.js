@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from '../../utils';
+
 export default StyleSheet.create({
   button: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: '#8c0032',
+    backgroundColor: COLORS.ColorAccent,
     borderRadius: 5,
   },
   buttonText: {

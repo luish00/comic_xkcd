@@ -3,6 +3,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { FavoriteScreen, HomeScreen } from '../../screens';
+import { COLORS } from '../../utils';
 
 import homeImg from '../../../assets/home.png';
 import homeOutlineImg from '../../../assets/home-outline.png';
@@ -63,17 +64,21 @@ const HomeBottomTab = () => {
 
           return (
             <TouchableOpacity
+              accessibilityLabel={options.tabBarAccessibilityLabel}
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
-              accessibilityLabel={options.tabBarAccessibilityLabel}
-              testID={options.tabBarTestID}
-              onPress={onPress}
-              onLongPress={onLongPress}
-              style={{ flex: 1 }}
               key={label}
+              onLongPress={onLongPress}
+              onPress={onPress}
+              style={{ flex: 1 }}
+              testID={options.tabBarTestID}
             >
               <View style={styles.tabContainer}>
-                <Image source={img} style={styles.tabImagen}  tintColor='#000070'/>
+                <Image
+                  source={img}
+                  style={styles.tabImagen}
+                  tintColor={COLORS.ColorPrimaryDark}
+                />
               </View>
             </TouchableOpacity>
           );
@@ -85,6 +90,7 @@ const HomeBottomTab = () => {
   return (
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
       <Tab.Screen name="Home" component={HomeScreen} />
+
       <Tab.Screen name="Favorite" component={FavoriteScreen} />
     </Tab.Navigator>
   );

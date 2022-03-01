@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import { COLORS } from '../../utils';
 
 export default StyleSheet.create({
   title: {
-    backgroundColor: '#4527a0',
+    backgroundColor: COLORS.ColorPrimary,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -33,5 +34,13 @@ export default StyleSheet.create({
   headerImagen: {
     height: 26,
     width: 26,
+  },
+  description: {
+    color: '#000',
+    padding: 20, 
+  },
+  pageCount: {
+    paddingHorizontal: 20,
+    textAlign: 'center', 
   }
 });

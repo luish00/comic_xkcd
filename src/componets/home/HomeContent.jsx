@@ -9,17 +9,15 @@ import {
   TouchableNativeFeedback
 } from 'react-native';
 
-import { ButtonColored } from '../common/ButtonColored';
+import { ButtonColored } from '../common';
 
-import { useApiGet } from '../../hooks/useApi';
+import { useApiGet, URL_JSON } from '../../hooks/useApi';
+import { addFavority, getFavorities, removeFavority } from '../../utils/storage';
 
 import heartImg from '../../../assets/heart-color.png';
 import heartOutlineImg from '../../../assets/heart-outline.png';
 
 import styles from './HomeContent.style';
-import { addFavority, getFavorities, removeFavority } from '../../utils/storage';
-
-const URL_JSON = 'info.0.json';
 
 const HomeContent = () => {
   const { width } = useWindowDimensions();
@@ -35,7 +33,7 @@ const HomeContent = () => {
     const loadFavorities = async () => {
       const lastFavorities = await getFavorities();
 
-      setFavorities(lastFavorities);
+      setFavorities(lastFavorities.map((item) => item.page));
     };
 
     loadFavorities();
@@ -96,7 +94,7 @@ const HomeContent = () => {
       removeFavority(page);
       setFavorities((prev) => prev.filter((item) => item !== page));
     } else {
-      addFavority(page);
+      addFavority({ page, img, title });
       setFavorities((prev) => [...new Set([page, ...prev])]);
     }
 
@@ -129,11 +127,11 @@ const HomeContent = () => {
         <View style={styles.flex1}>
           <Image style={[{ width: width - 40 }, styles.image]} source={{ uri: img }} />
 
-          <Text style={{ padding: 20, color: '#000' }}>
+          <Text style={styles.description}>
             {alt}
           </Text>
 
-          <Text style={{ textAlign: 'center', paddingHorizontal: 20 }}>
+          <Text style={styles.pageCount}>
             {page}/{maxPage}
           </Text>
         </View>

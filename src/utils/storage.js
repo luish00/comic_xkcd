@@ -47,14 +47,14 @@ export async function getFavorities() {
 export async function addFavority(value) {
   const lastFavorities = await getFavorities();
 
-  storeData({ value: [...new Set([value, ...lastFavorities])], key: KEY_FAVORITIES });
+  storeData({ value: [value, ...lastFavorities], key: KEY_FAVORITIES });
 }
 
-export async function removeFavority(value) {
+export async function removeFavority(page) {
   const lastFavorities = await getFavorities();
 
   storeData({
-    value: lastFavorities.filter((item) => item !== value),
+    value: lastFavorities.filter((item) => item.page !== page),
     key: KEY_FAVORITIES,
   });
 }
