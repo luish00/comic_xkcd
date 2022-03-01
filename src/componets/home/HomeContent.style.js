@@ -15,5 +15,15 @@ export default StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  image: {
+    alignSelf: 'center',
+    flex: 1,
+    marginTop: 16,
+    minHeight: 500,
+    resizeMode: 'contain'
+  },
+  flex1: {
+    flex: 1
   }
 });
