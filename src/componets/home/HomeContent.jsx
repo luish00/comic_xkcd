@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
+  ActivityIndicator,
   Image,
   ScrollView,
   Text,
@@ -16,6 +17,7 @@ import { useApiGet, URL_JSON } from '../../hooks/useApi';
 import { addFavority, getFavorities, removeFavority } from '../../utils/storage';
 import { NOT_FOUND_IMG } from '../../utils/constans';
 
+import { COLORS } from '../../utils';
 import heartImg from '../../../assets/heart-color.png';
 import heartOutlineImg from '../../../assets/heart-outline.png';
 
@@ -121,10 +123,10 @@ const HomeContent = () => {
     }
 
     return size;
-  }, [isZoom]);
+  }, [isLoading, isZoom]);
 
   return (
-    <>
+    <View style={{position: 'relative'}}>
       <View style={styles.title}>
         <Text ellipsizeMode='clip' numberOfLines={1} style={styles.titleText}>{title}</Text>
 
@@ -137,7 +139,7 @@ const HomeContent = () => {
         </TouchableNativeFeedback>
       </View>
 
-      <ScrollView style={styles.mt16}>
+      <ScrollView style={styles.container}>
         <View>
           <View style={styles.buttons}>
             <ButtonColored label='<' onPress={onPrev} />
@@ -148,8 +150,14 @@ const HomeContent = () => {
           </View>
 
           <View style={styles.flex1}>
-            <ScrollView horizontal>
+            <ScrollView horizontal={!isLoading}>
               <View style={styles.imageContainer}>
+                {isLoading && (
+                  <View style={styles.loading}>
+                    <ActivityIndicator size='large' color={COLORS.ColorAccent} />
+                  </View>
+                )}
+
                 <TouchableOpacity onPress={onZoom}>
                   <ImageAuto style={[imgSize, styles.image]} uri={img} />
                 </TouchableOpacity>
@@ -164,9 +172,9 @@ const HomeContent = () => {
               {page}/{maxPage}
             </Text>
           </View>
-        </View>
-      </ScrollView>
-    </>
+        </View >
+      </ScrollView >
+    </View>
   );
 }
 

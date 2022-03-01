@@ -3,13 +3,12 @@ import { COLORS } from '../../utils';
 
 export default StyleSheet.create({
   title: {
+    alignItems: 'center',
     backgroundColor: COLORS.ColorPrimary,
-    flex: 1,
     flexDirection: 'row',
+    height: 56,
     justifyContent: 'space-between',
-    minHeight: 56,
     paddingHorizontal: 10,
-    paddingVertical: 15,
     width: '100%',
   },
   titleText: {
@@ -28,7 +27,6 @@ export default StyleSheet.create({
     alignSelf: 'center',
     flex: 1,
     marginTop: 16,
-    minHeight: 500,
     resizeMode: 'contain',
   },
   flex1: {
@@ -46,7 +44,13 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     textAlign: 'center',
   },
-  mt16: {
-    marginTop: 16,
+  container: {
+    position: 'absolute',
+    top: 68,
   },
+  loading: {
+    alignSelf: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  }
 });
