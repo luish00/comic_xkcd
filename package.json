@@ -8,7 +8,10 @@
     "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint .",
-    "clean": "cd android && ./gradlew clean"
+    "clean": "cd android && ./gradlew clean",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "bundle-release-android": "cd android && ./gradlew bundleRelease",
+    "build-android": "cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.16.1",
