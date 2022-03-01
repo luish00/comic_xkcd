@@ -22,7 +22,7 @@ const HomeBottomTab = () => {
     }
 
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={styles.tab}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const label =
