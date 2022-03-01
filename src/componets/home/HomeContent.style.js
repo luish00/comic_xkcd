@@ -7,10 +7,10 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
     paddingVertical: 15,
     paddingHorizontal: 10,
     width: '100%',
+    minHeight: 56,
   },
   titleText: {
     color: '#fff',
@@ -20,6 +20,9 @@ export default StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  imageContainer: {
+    paddingHorizontal: 20,
   },
   image: {
     alignSelf: 'center',
@@ -42,5 +45,8 @@ export default StyleSheet.create({
   pageCount: {
     paddingHorizontal: 20,
     textAlign: 'center', 
+  },
+  mt16: {
+    marginTop: 16,
   }
 });

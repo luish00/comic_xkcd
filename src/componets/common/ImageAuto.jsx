@@ -8,7 +8,7 @@ const ImageAuto = ({ uri, style, defaultHeigth = 500 }) => {
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (isLoaded) return;
+    if (isLoaded || !uri) return;
 
     Image.getSize(uri, (loadWidth, loadHeigth) => {
       const scaleFactor = loadWidth / width

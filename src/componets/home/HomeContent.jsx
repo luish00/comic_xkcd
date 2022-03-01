@@ -4,20 +4,23 @@ import {
   ScrollView,
   Text,
   ToastAndroid,
+  TouchableNativeFeedback,
+  TouchableOpacity,
   useWindowDimensions,
   View,
-  TouchableNativeFeedback
 } from 'react-native';
 
-import { ButtonColored } from '../common';
+import { ButtonColored, ImageAuto } from '../common';
 
 import { useApiGet, URL_JSON } from '../../hooks/useApi';
 import { addFavority, getFavorities, removeFavority } from '../../utils/storage';
+import { NOT_FOUND_IMG } from '../../utils/constans';
 
 import heartImg from '../../../assets/heart-color.png';
 import heartOutlineImg from '../../../assets/heart-outline.png';
 
 import styles from './HomeContent.style';
+import { useDoubleClick } from '../../hooks';
 
 const HomeContent = () => {
   const { width } = useWindowDimensions();
@@ -28,6 +31,11 @@ const HomeContent = () => {
   const [maxPage, setMaxPage] = useState(2587);
   const [alt, setAlt] = useState('');
   const [favorities, setFavorities] = useState([]);
+  const [isZoom, setZoom] = useState(0);
+
+  const [onZoom] = useDoubleClick(() => {
+    setZoom((prev) => !prev);
+  });
 
   useEffect(() => {
     const loadFavorities = async () => {
@@ -43,7 +51,6 @@ const HomeContent = () => {
     getImge({ url: URL_JSON });
   }, []);
 
-
   useEffect(() => {
     if (isLoading && !imgeRequest) return;
 
@@ -54,6 +61,7 @@ const HomeContent = () => {
         setMaxPage(data.num);
       }
 
+      setZoom(false);
       setTitle(data.safe_title);
       setImg(data.img);
       setAlt(data.alt);
@@ -61,6 +69,7 @@ const HomeContent = () => {
     }
 
     if (imgeRequest?.status === 500) {
+      setImg(NOT_FOUND_IMG);
       ToastAndroid.show('Houston we have a problem', ToastAndroid.SHORT)
     }
   }, [imgeRequest, isLoading, page]);
@@ -101,42 +110,63 @@ const HomeContent = () => {
   }, [isFavority, isLoading, page]);
 
 
+  const imgSize = useMemo(() => {
+    let size = { width: width - 40 };
+
+    if (isZoom) {
+      size = {
+        width: width * 2,
+        height: 500,
+      }
+    }
+
+    return size;
+  }, [isZoom]);
+
   return (
-    <ScrollView>
-      <View>
-        <View style={styles.title}>
-          <Text ellipsizeMode='clip' numberOfLines={1} style={styles.titleText}>{title}</Text>
+    <>
+      <View style={styles.title}>
+        <Text ellipsizeMode='clip' numberOfLines={1} style={styles.titleText}>{title}</Text>
 
-          <TouchableNativeFeedback onPress={handleAddFavority}>
-            <Image
-              source={isFavority ? heartImg : heartOutlineImg}
-              style={styles.headerImagen}
-              tintColor='#fff'
-            />
-          </TouchableNativeFeedback>
-        </View>
-
-        <View style={styles.buttons}>
-          <ButtonColored label='<' onPress={onPrev} />
-
-          <ButtonColored label='random' onPress={onRandom} />
-
-          <ButtonColored label='>' onPress={onNext} />
-        </View>
-
-        <View style={styles.flex1}>
-          <Image style={[{ width: width - 40 }, styles.image]} source={{ uri: img }} />
-
-          <Text style={styles.description}>
-            {alt}
-          </Text>
-
-          <Text style={styles.pageCount}>
-            {page}/{maxPage}
-          </Text>
-        </View>
+        <TouchableNativeFeedback onPress={handleAddFavority}>
+          <Image
+            source={isFavority ? heartImg : heartOutlineImg}
+            style={styles.headerImagen}
+            tintColor='#fff'
+          />
+        </TouchableNativeFeedback>
       </View>
-    </ScrollView>
+
+      <ScrollView style={styles.mt16}>
+        <View>
+          <View style={styles.buttons}>
+            <ButtonColored label='<' onPress={onPrev} />
+
+            <ButtonColored label='random' onPress={onRandom} />
+
+            <ButtonColored label='>' onPress={onNext} />
+          </View>
+
+          <View style={styles.flex1}>
+            <ScrollView horizontal>
+              <View style={styles.imageContainer}>
+                <TouchableOpacity onPress={onZoom}>
+                  <ImageAuto style={[imgSize, styles.image]} uri={img} />
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
+
+            <Text style={styles.description}>
+              {alt}
+            </Text>
+
+            <Text style={styles.pageCount}>
+              {page}/{maxPage}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
+    </>
   );
 }
 
