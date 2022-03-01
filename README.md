@@ -1,5 +1,8 @@
 # Aplicación de comic xkcd
 
+![Home](./screenshot/Screenshot_1646166401.png)
+![Favorities](./screenshot/Screenshot_1646166410.png)
+
 ## Created by [npx react-native](https://reactnative.dev/docs/environment-setup)
 
 ## Style Guide
