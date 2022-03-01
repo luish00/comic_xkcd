@@ -3,14 +3,18 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   title: {
     backgroundColor: '#4527a0',
-    color: '#fff',
     flex: 1,
-    fontSize: 20,
-    fontWeight: 'bold',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 16,
     paddingVertical: 15,
-    textAlign: 'center',
+    paddingHorizontal: 10,
     width: '100%',
+  },
+  titleText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   buttons: {
     flexDirection: 'row',
@@ -25,5 +29,9 @@ export default StyleSheet.create({
   },
   flex1: {
     flex: 1
+  },
+  headerImagen: {
+    height: 26,
+    width: 26,
   }
 });
