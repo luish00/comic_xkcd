@@ -7,11 +7,7 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { HomeBottomTab } from './src/componets/navigations/HomeBottomTab';
 
@@ -20,11 +16,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      {/* <SafeAreaView >
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      </SafeAreaView> */}
-
-        <HomeBottomTab />
+      <HomeBottomTab isDarkMode={isDarkMode} />
     </NavigationContainer>
   );
 };

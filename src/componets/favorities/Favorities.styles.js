@@ -7,9 +7,9 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
+    marginBottom: 16,
     paddingHorizontal: 10,
     paddingVertical: 15,
-    marginBottom: 16,
     width: '100%',
   },
   pageTitle: {
@@ -19,20 +19,20 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
   },
   img: {
+    alignSelf: 'center',
     flex: 1,
     resizeMode: 'contain',
-    alignSelf: 'center',
   },
   row: {
-    paddingTop: 16,
     flexDirection: 'row',
+    paddingTop: 16,
   },
   trashImg: {
     height: 26,
     width: 26,
   },
   ph16: {
-    paddingHorizontal: 21
+    paddingHorizontal: 21,
   },
   noFavorities: {
     alignItems: 'center',
@@ -40,5 +40,5 @@ export default StyleSheet.create({
     justifyContent: 'center',
     minHeight: 100,
     width: '100%',
-  }
+  },
 });

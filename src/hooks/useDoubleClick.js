@@ -16,11 +16,11 @@ const useDoubleClick = (callback = () => { }) => {
 
     clearTimeout(resetClick);
     resetClick = setTimeout(() => setClicks(0), 1000);
-  }, [clicks]);
+  }, [callback, clicks]);
 
   const onPress = useCallback(() => setClicks((prev) => prev + 1));
 
   return [onPress];
-}
+};
 
 export { useDoubleClick };

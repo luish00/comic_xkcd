@@ -7,10 +7,10 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    width: '100%',
     minHeight: 56,
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    width: '100%',
   },
   titleText: {
     color: '#fff',
@@ -19,7 +19,7 @@ export default StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   imageContainer: {
     paddingHorizontal: 20,
@@ -29,10 +29,10 @@ export default StyleSheet.create({
     flex: 1,
     marginTop: 16,
     minHeight: 500,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
   },
   flex1: {
-    flex: 1
+    flex: 1,
   },
   headerImagen: {
     height: 26,
@@ -40,13 +40,13 @@ export default StyleSheet.create({
   },
   description: {
     color: '#000',
-    padding: 20, 
+    padding: 20,
   },
   pageCount: {
     paddingHorizontal: 20,
-    textAlign: 'center', 
+    textAlign: 'center',
   },
   mt16: {
     marginTop: 16,
-  }
+  },
 });

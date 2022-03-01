@@ -6,13 +6,13 @@ export default StyleSheet.create({
   },
   tabContainer: {
     alignContent: 'center',
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    display: 'flex',
     height: 50,
+    justifyContent: 'center',
   },
   tabImagen: {
     height: 30,
     width: 30,
-  }
-})
+  },
+});

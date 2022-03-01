@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 const URL_BASE = 'https://xkcd.com/';
 const URL_JSON = 'info.0.json';
 
-async function apiFetch({ body, headers = {}, method, params = {}, url }) {
+async function apiFetch({ body, headers = {}, method, url }) {
   let rest = {};
 
   if (method === 'POST') {
@@ -11,14 +11,14 @@ async function apiFetch({ body, headers = {}, method, params = {}, url }) {
   }
 
   return fetch(`${URL_BASE}/${url}`, {
-    method: method,
     headers: {
       'Content-Type': 'application/json',
       ...headers,
     },
+    method: method,
     ...rest,
   });
-};
+}
 
 const useApiGet = ({ headers = {} } = {}) => {
   const [result, setResult] = useState(null);
@@ -37,7 +37,6 @@ const useApiGet = ({ headers = {} } = {}) => {
         status: request.status,
         data,
       };
-
     } catch (error) {
       wrapperData = {
         data: null,
@@ -56,4 +55,4 @@ const useApiGet = ({ headers = {} } = {}) => {
   return [get, result, isLoading];
 };
 
-export { useApiGet, URL_JSON }
+export { useApiGet, URL_JSON };
