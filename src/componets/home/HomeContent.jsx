@@ -136,16 +136,16 @@ const HomeContent = () => {
         </TouchableNativeFeedback>
       </View>
 
-      <ScrollView style={styles.container}>
+      <View style={styles.buttons}>
+        <ButtonColored label='<' onPress={onPrev} />
+
+        <ButtonColored label='random' onPress={onRandom} />
+
+        <ButtonColored label='>' onPress={onNext} />
+      </View>
+
+      <ScrollView style={styles.container} nestedScrollEnabled>
         <View>
-          <View style={styles.buttons}>
-            <ButtonColored label='<' onPress={onPrev} />
-
-            <ButtonColored label='random' onPress={onRandom} />
-
-            <ButtonColored label='>' onPress={onNext} />
-          </View>
-
           <View style={styles.flex1}>
             <ScrollView horizontal={!isLoading}>
               <View style={styles.imageContainer}>
@@ -161,13 +161,15 @@ const HomeContent = () => {
               </View>
             </ScrollView>
 
-            <Text style={styles.description}>
-              {alt}
-            </Text>
+            <View style={styles.descriptionContainer}>
+              <Text style={styles.description}>
+                {alt}
+              </Text>
 
-            <Text style={styles.pageCount}>
-              {page}/{maxPage}
-            </Text>
+              <Text style={styles.pageCount}>
+                {page}/{maxPage}
+              </Text>
+            </View>
           </View>
         </View >
       </ScrollView >
