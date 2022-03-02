@@ -19,6 +19,7 @@ export default StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    paddingTop: 8,
   },
   imageContainer: {
     paddingHorizontal: 20,
@@ -26,7 +27,6 @@ export default StyleSheet.create({
   image: {
     alignSelf: 'center',
     flex: 1,
-    marginTop: 16,
     resizeMode: 'contain',
   },
   flex1: {
@@ -36,17 +36,18 @@ export default StyleSheet.create({
     height: 26,
     width: 26,
   },
+  descriptionContainer: {
+    flex: 1,
+    paddingBottom: 200,
+  },
   description: {
     color: '#000',
     padding: 20,
+    textAlign: 'center',
   },
   pageCount: {
     paddingHorizontal: 20,
     textAlign: 'center',
-  },
-  container: {
-    position: 'absolute',
-    top: 68,
   },
   loading: {
     alignSelf: 'center',
