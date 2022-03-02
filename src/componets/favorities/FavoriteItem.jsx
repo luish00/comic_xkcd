@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Image,
+  ScrollView,
   Text,
-  TouchableNativeFeedback,
   TouchableOpacity,
   useWindowDimensions,
   View,
@@ -15,7 +15,6 @@ import { COLORS } from '../../utils';
 import trashImg from '../../../assets/trash.png';
 
 import styles from './Favorities.styles';
-import { ScrollView } from 'react-native-gesture-handler';
 
 const FavoriteItem = ({ item, onPress = () => { } }) => {
   const { width } = useWindowDimensions();

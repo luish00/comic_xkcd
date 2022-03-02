@@ -1,10 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  FlatList,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FlatList, Text, View } from 'react-native';
 
 import { getFavorities, removeFavority } from '../../utils/storage';
 import { FavoriteItem } from './FavoriteItem';

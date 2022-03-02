@@ -16,13 +16,13 @@ import { ButtonColored, ImageAuto } from '../common';
 import { useApiGet, URL_JSON } from '../../hooks/useApi';
 import { addFavority, getFavorities, removeFavority } from '../../utils/storage';
 import { NOT_FOUND_IMG } from '../../utils/constans';
-
 import { COLORS } from '../../utils';
+import { useDoubleClick } from '../../hooks';
+
 import heartImg from '../../../assets/heart-color.png';
 import heartOutlineImg from '../../../assets/heart-outline.png';
 
 import styles from './HomeContent.style';
-import { useDoubleClick } from '../../hooks';
 
 const HomeContent = () => {
   const { width } = useWindowDimensions();
@@ -77,19 +77,21 @@ const HomeContent = () => {
   }, [imgeRequest, isLoading, page]);
 
   const onRandom = useCallback(() => {
+    if (isLoading) return;
+
     const random = Math.floor(Math.random() * maxPage) + 1
 
     getImge({ url: `${random}/${URL_JSON}` });
   }, [maxPage]);
 
   const onNext = useCallback(() => {
-    if (page >= maxPage) return;
+    if (isLoading || page >= maxPage) return;
 
     getImge({ url: `${page + 1}/${URL_JSON}` });
   }, [page, maxPage]);
 
   const onPrev = useCallback(() => {
-    if (page <= 1) return;
+    if (isLoading || page <= 1) return;
 
     getImge({ url: `${page - 1}/${URL_JSON}` });
   }, [page, maxPage]);
@@ -99,7 +101,7 @@ const HomeContent = () => {
   }, [favorities, page]);
 
   const handleAddFavority = useCallback(() => {
-    if (isLoading || page <= -1) return
+    if (isLoading || page <= -1) return;
 
     if (isFavority) {
       removeFavority(page);
@@ -108,25 +110,20 @@ const HomeContent = () => {
       addFavority({ page, img, title });
       setFavorities((prev) => [...new Set([page, ...prev])]);
     }
-
   }, [isFavority, isLoading, page]);
-
 
   const imgSize = useMemo(() => {
     let size = { width: width - 40 };
 
     if (isZoom) {
-      size = {
-        width: width * 2,
-        height: 500,
-      }
+      size = { width: width * 2, height: 500 };
     }
 
     return size;
   }, [isLoading, isZoom]);
 
   return (
-    <View style={{position: 'relative'}}>
+    <View style={styles.relative}>
       <View style={styles.title}>
         <Text ellipsizeMode='clip' numberOfLines={1} style={styles.titleText}>{title}</Text>
 

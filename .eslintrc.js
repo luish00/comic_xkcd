@@ -22,7 +22,7 @@ module.exports = {
         ObjectPattern: { multiline: true },
         ImportDeclaration: { multiline: true, minProperties: 5 },
         ExportDeclaration: { multiline: true, minProperties: 5 },
-      }]
+      }],
     },
   },
 };

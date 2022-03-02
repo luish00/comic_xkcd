@@ -7,15 +7,15 @@ async function apiFetch({ body, headers = {}, method, url }) {
   let rest = {};
 
   if (method === 'POST') {
-    rest = { body: JSON.stringify(body) }
+    rest = { body: JSON.stringify(body) };
   }
 
   return fetch(`${URL_BASE}/${url}`, {
+    method: method,
     headers: {
       'Content-Type': 'application/json',
       ...headers,
     },
-    method: method,
     ...rest,
   });
 }
@@ -33,9 +33,9 @@ const useApiGet = ({ headers = {} } = {}) => {
       const data = request.status === 200 ? await request.json() : null;
 
       wrapperData = {
+        data,
         isValid: request.ok,
         status: request.status,
-        data,
       };
     } catch (error) {
       wrapperData = {

@@ -59,5 +59,5 @@ export async function removeFavority(page) {
   storeData({
     value: lastFavorities.filter((item) => item.page !== page),
     key: KEY_FAVORITIES,
-  })
-};
+  });
+}
