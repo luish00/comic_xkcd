@@ -23,6 +23,7 @@ import heartImg from '../../../assets/heart-color.png';
 import heartOutlineImg from '../../../assets/heart-outline.png';
 
 import styles from './HomeContent.style';
+import { BannerAdCustom } from '../common/BannerAdCustom';
 
 const HomeContent = () => {
   const { width } = useWindowDimensions();
@@ -135,6 +136,8 @@ const HomeContent = () => {
           />
         </TouchableNativeFeedback>
       </View>
+
+      <BannerAdCustom />
 
       <View style={styles.buttons}>
         <ButtonColored label='<' onPress={onPrev} />

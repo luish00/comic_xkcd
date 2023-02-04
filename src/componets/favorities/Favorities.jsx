@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 
 import { getFavorities, removeFavority } from '../../utils/storage';
+import { BannerAdCustom } from '../common/BannerAdCustom';
 import { FavoriteItem } from './FavoriteItem';
 
 import styles from './Favorities.styles';
@@ -40,6 +41,8 @@ const Favorities = () => {
   return (
     <View>
       <Text style={styles.title}>Favorities</Text>
+
+      <BannerAdCustom />
 
       <FlatList
         keyExtractor={keyExtractor}

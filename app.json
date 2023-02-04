@@ -1,4 +1,8 @@
 {
   "name": "luishectorcomicxkcd",
-  "displayName": "CXkcd"
+  "displayName": "CXkcd Comic",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-2458957244369095~8153880089",
+    "ios_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx"
+  }
 }
